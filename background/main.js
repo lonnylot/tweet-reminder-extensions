@@ -57,7 +57,7 @@ function triggerLoggedOutEvent() {
       32: "icons/logo-error-32.png"
     }
   });
-  browser.alarms.clear().then(() => {});
+  browser.alarms.clearAll().then(() => {});
   notifyUser("Reminders Disabled.");
   clearStoredAccessToken();
 }
