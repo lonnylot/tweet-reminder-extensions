@@ -1,0 +1,55 @@
+{
+
+  "description": "Set a reminder for a tweet.",
+  "manifest_version": 2,
+  "name": "Tweet Reminder",
+  "version": "1.0",
+  "homepage_url": "https://tweet-reminder.nonstockproductions.com",
+  "icons": {
+    "16": "icons/logo-16.png",
+    "32": "icons/logo-32.png"
+  },
+
+  "permissions": [
+    "identity",
+    "notifications",
+    "storage",
+    "alarms",
+    "tabs"
+  ],
+
+  "background": {
+    "scripts": [
+      "background/storage.js",
+      "background/main.js",
+      "background/authorize.js"
+    ]
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/logo-error-16.png",
+      "32": "icons/logo-error-32.png"
+    },
+    "default_title": "Tweet Reminder"
+  },
+
+  "web_accessible_resources": [
+    "icons/logo-32.png",
+    "icons/logo-32.png"
+  ],
+
+  "applications": {
+    "gecko": {
+      "id": "{f41a5648-b508-4a4e-9e87-ece341964c08}"
+    }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*"],
+      "js": ["content-scripts/tweet-reminder.js"]
+    }
+  ]
+
+}

@@ -1,0 +1,13 @@
+{
+  "name": "tweet-reminder",
+  "version": "1.0.0",
+  "description": "Set a reminder for a tweet.",
+  "main": "index.js",
+  "scripts": {
+    "start": "web-ext run -v --bc",
+    "sign": "web-ext sign --verbose --ignore-files=.gitignore .git .DS_Store",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lonny@nonstockproductions.com",
+  "license": "MIT"
+}
