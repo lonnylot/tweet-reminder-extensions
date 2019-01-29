@@ -1,5 +1,5 @@
 function addTweetReminderButton() {
-  document.querySelectorAll('.js-stream-tweet').forEach((tweet) => {
+  document.querySelectorAll('.js-stream-tweet, .permalink-tweet').forEach((tweet) => {
     if (tweet.getAttribute('tweet-reminder-loaded')) {
       return;
     }
@@ -63,3 +63,19 @@ function startPageObserver(mutationObserver) {
 }
 
 startPageObserver(pageContainerObserver);
+
+var permalinkContainerObserver = new MutationObserver((mutations) => {
+  restartObserver(tweetObserver);
+  addTweetReminderButton();
+});
+
+function startPermalinkObserver(mutationObserver) {
+  let element = document.getElementById('permalink-overlay-body');
+  if (element !== null) {
+    mutationObserver.observe(element, {
+      childList: true
+    });
+  }
+}
+
+startPermalinkObserver(permalinkContainerObserver);

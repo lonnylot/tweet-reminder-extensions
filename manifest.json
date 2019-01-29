@@ -3,7 +3,8 @@
   "description": "Schedule reminders for tweets while browsing twitter.com and receive notifications from your reminders.",
   "manifest_version": 2,
   "name": "Tweet Reminder",
-  "version": "1.0.1",
+  "version": "1.0.3",
+  "author": "Non Stock Productions",
   "homepage_url": "https://tweet-reminder.nonstockproductions.com",
   "icons": {
     "16": "icons/logo-16.png",
@@ -20,6 +21,7 @@
 
   "background": {
     "scripts": [
+      "webextension-polyfill/dist/browser-polyfill.js",
       "background/storage.js",
       "background/main.js",
       "background/authorize.js"
@@ -48,7 +50,10 @@
   "content_scripts": [
     {
       "matches": ["https://twitter.com/*"],
-      "js": ["content-scripts/tweet-reminder.js"]
+      "js": [
+        "webextension-polyfill/dist/browser-polyfill.js",
+        "content-scripts/tweet-reminder.js"
+      ]
     }
   ]
 

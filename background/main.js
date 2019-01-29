@@ -5,12 +5,13 @@ function notifyUser(message) {
   browser.notifications.create({
     "type": "basic",
     "title": "Tweet Reminder",
-    message
+    message,
+    "iconUrl": "icons/logo-128.png"
   });
 }
 
 function logError(error) {
-  console.error(`Error: ${error}`);
+  console.error('Error: ', error);
 }
 
 browser.browserAction.onClicked.addListener(() => {
@@ -72,7 +73,7 @@ browser.alarms.onAlarm.addListener((alarm) => {
       headers: {
         'Accept': 'application/json',
         'Authorization': 'Bearer '+accessToken,
-        'X-Plugin-Version': 'Firefox Extionsion/'+browser.runtime.getManifest().version
+        'X-Plugin-Version': (typeof chrome !== undefined ? 'Chrome' : 'Firefox')+' Extension/'+browser.runtime.getManifest().version
       },
       mode: 'cors'
     }).then((response) => {
